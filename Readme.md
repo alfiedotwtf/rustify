@@ -10,11 +10,9 @@ request and i'll be happy to merge.
 
 # INSTALLATION
 
-To install rustify:
+To install Rust using rustify:
 
-    git clone https://github.com/alfiedotwtf/rustify
-    cd rustify
-    ./rustify.sh
+    curl -sfL https://raw.githubusercontent.com/alfiedotwtf/rustify/master/rustify.sh | bash
 
 # SUPPORT
 
