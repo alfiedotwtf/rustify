@@ -4,7 +4,7 @@
 # install Rust
 #
 
-which rustc > /dev/null || curl -sf -L https://static.rust-lang.org/rustup.sh | sh
+which rustc > /dev/null || curl -sf -L https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh | sh
 
 #
 # install Pathogen for Vim
