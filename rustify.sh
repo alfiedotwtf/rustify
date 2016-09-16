@@ -2,10 +2,11 @@
 
 # install prerequisites
 
-PACKAGES=  \
-  curl     \
-  libc-dev \
-  git      \
+read -r -d '' PACKAGES << EOF
+  curl
+  libc-dev
+  git
+EOF
 
 apt-get install -y $PACKAGES
 
