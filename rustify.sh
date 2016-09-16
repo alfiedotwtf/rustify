@@ -7,8 +7,8 @@
 RUSTC=`which rustc`
 
 if [ "$RUSTC" == "" ]; then
-	curl -o /tmp/blastoff.sh https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh
-	sh /tmp/blastoff.sh --yes
+        curl -o /tmp/rustup.sh https://sh.rustup.rs
+        sh /tmp/rustup.sh -y
 fi
 
 #
