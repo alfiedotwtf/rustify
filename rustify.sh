@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# install prerequisites
+
+PACKAGES=  \
+  curl     \
+  libc-dev \
+  git      \
+
+apt-get install -y $PACKAGES
+
 #
 # install Rust
 #
