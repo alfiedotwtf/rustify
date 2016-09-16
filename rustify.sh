@@ -18,6 +18,7 @@ RUSTC=`which rustc`
 if [ "$RUSTC" == "" ]; then
         curl -o /tmp/rustup.sh https://sh.rustup.rs
         sh /tmp/rustup.sh -y
+        /root/.cargo/bin/rustup install nightly
 fi
 
 #
