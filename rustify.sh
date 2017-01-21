@@ -4,8 +4,8 @@
 
 read -r -d '' PACKAGES << EOF
   curl
-  libc-dev
   git
+  libc-dev
 EOF
 
 apt-get install -y $PACKAGES
