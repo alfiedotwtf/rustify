@@ -4,9 +4,14 @@ rustify - Convenience script to install Rust with all the trimmings
 
 # DESCRIPTION
 
-rustify is a convenience script that will install Rust, and setup Vim syntax
-highlighting. If there's anything else you think would be useful, send a pull
-request and i'll be happy to merge.
+rustify is a convenience script that will:
+
+    * Install Rust
+    * Setup Vim syntax highlighting
+    * Setup Racer with Vim integration for autocomplete
+    * Setup rustfmt with Vim integration for autoformat
+    
+If there's anything else you think would be useful, send a pull request and i'll be happy to merge.
 
 # INSTALLATION
 
