@@ -8,16 +8,18 @@ read -r -d '' PACKAGES << EOF
   libc-dev
 EOF
 
-apt-get install -y $PACKAGES
+sudo apt-get install -y $PACKAGES
 
 #
 # install Rust
 #
 
 if [ "$RUSTC" == `which rustc` ]; then
-        curl -LSso /tmp/rustup.sh https://sh.rustup.rs
-        sh /tmp/rustup.sh -y
-        /root/.cargo/bin/rustup install nightly
+  curl -LSso ~/rustup.sh https://sh.rustup.rs
+  sh ~/rustup.sh -y
+  ~/.cargo/bin/rustup update
+  ~/.cargo/bin/rustup install nightly
+  ~/.cargo/bin/rustup default nightly
 fi
 
 #
@@ -45,7 +47,7 @@ fi
 # install racer
 #
 
-if [ ! -f /root/.cargo/bin/racer ]; then
+if [ ! -f ~/.cargo/bin/racer ]; then
   cargo install racer
   rustup component add rust-src
 
@@ -54,22 +56,16 @@ if [ ! -f /root/.cargo/bin/racer ]; then
   git clone --depth=1 https://github.com/racer-rust/vim-racer.git ~/.vim/bundle/vim-racer
 
   grep "set hidden"         ~/.vimrc > /dev/null || echo "set hidden"                                            >> ~/.vimrc
-  grep "let g:racer_cmd"    ~/.vimrc > /dev/null || echo 'let g:racer_cmd = "/root/.cargo/bin/racer"'            >> ~/.vimrc
-  grep "rust-def)"          ~/.vimrc > /dev/null || echo "au FileType rust nmap gd <Plug>(rust-def)"             >> ~/.vimrc
-  grep "rust-def-split)"    ~/.vimrc > /dev/null || echo "au FileType rust nmap gs <Plug>(rust-def-split)"       >> ~/.vimrc
-  grep "rust-def-vertical)" ~/.vimrc > /dev/null || echo "au FileType rust nmap gx <Plug>(rust-def-vertical)"    >> ~/.vimrc
-  grep "rust-def-doc)"      ~/.vimrc > /dev/null || echo "au FileType rust nmap <leader>gd <Plug>(rust-def-doc)" >> ~/.vimrc
+  grep "let g:racer_cmd"    ~/.vimrc > /dev/null || echo "let g:racer_cmd = \"$HOME/.cargo/bin/racer\""          >> ~/.vimrc
+  grep "rust-def-vertical)" ~/.vimrc > /dev/null || echo "au FileType rust nmap gd <Plug>(rust-def-vertical)"    >> ~/.vimrc
 fi
 
 #
 # install rustfmt
 #
 
-if [ ! -f /root/.cargo/bin/rustfmt ]; then
-  cargo install rustfmt
-  git clone --depth=1 https://github.com/Chiel92/vim-autoformat.git ~/.vim/bundle/autoformat
+if [ ! -f ~/.cargo/bin/rustfmt ]; then
+  cargo install rustfmt-nightly
 
-  grep "formatdef_rustfmt" ~/.vimrc > /dev/null || echo "let g:formatdef_rustfmt = '\"rustfmt\"'" >> ~/.vimrc
-  grep "formatters_rust"   ~/.vimrc > /dev/null || echo "let g:formatters_rust = ['rustfmt']"     >> ~/.vimrc
-  grep "Autoformat"        ~/.vimrc > /dev/null || echo "nmap <Leader>f :Autoformat<CR>"          >> ~/.vimrc
+  grep "RustFmt" ~/.vimrc > /dev/null || echo "nmap <Leader>f :RustFmt<CR>" >> ~/.vimrc
 fi
