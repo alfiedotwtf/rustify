@@ -60,3 +60,16 @@ if [ ! -f /root/.cargo/bin/racer ]; then
   grep "rust-def-vertical)" ~/.vimrc > /dev/null || echo "au FileType rust nmap gx <Plug>(rust-def-vertical)"    >> ~/.vimrc
   grep "rust-def-doc)"      ~/.vimrc > /dev/null || echo "au FileType rust nmap <leader>gd <Plug>(rust-def-doc)" >> ~/.vimrc
 fi
+
+#
+# install rustfmt
+#
+
+if [ ! -f /root/.cargo/bin/rustfmt ]; then
+  cargo install rustfmt
+  git clone --depth=1 https://github.com/Chiel92/vim-autoformat.git ~/.vim/bundle/autoformat
+
+  grep "formatdef_rustfmt" ~/.vimrc > /dev/null || echo "let g:formatdef_rustfmt = '\"rustfmt\"'" >> ~/.vimrc
+  grep "formatters_rust"   ~/.vimrc > /dev/null || echo "let g:formatters_rust = ['rustfmt']"     >> ~/.vimrc
+  grep "Autoformat"        ~/.vimrc > /dev/null || echo "nmap <Leader>f :Autoformat<CR>"          >> ~/.vimrc
+fi
