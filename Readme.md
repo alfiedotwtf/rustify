@@ -21,19 +21,19 @@ i'll be happy to merge.
 
 The first thing to do is build the Docker image. This only has to be done once:
 
-    $ make docker-build
+    $ make build-docker
 
 Once the Docker image has been built, run the Docker container and install the world:
 
-    $ make docker-run
+    $ make run-docker
     # /srv/rustify/rustify.sh
 
 # USAGE
 
 Now that everything has been setup, it's ready to be used. Each time you want to do some Rust:
 
-    $ make docker-run
-    # <insert-rust-development> 
+    $ make run-docker
+    # <insert-rust-development>
 
 # SUPPORT
 
