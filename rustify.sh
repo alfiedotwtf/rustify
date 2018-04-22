@@ -1,20 +1,25 @@
 #!/bin/bash
 
+set -e
+set -o pipefail
+set -u
+
 # install prerequisites
 
-read -r -d '' PACKAGES << EOF
+read -r -d '' PACKAGES << EOF || true
   curl
+  gcc
   git
   libc-dev
 EOF
 
-sudo apt-get install -y $PACKAGES
+apt-get install -y $PACKAGES
 
 #
 # install Rust
 #
 
-if [ "$RUSTC" == `which rustc` ]; then
+if [ "" == "$(which rustc)" ]; then
   curl -LSso ~/rustup.sh https://sh.rustup.rs
   sh ~/rustup.sh -y
   ~/.cargo/bin/rustup update
@@ -22,13 +27,16 @@ if [ "$RUSTC" == `which rustc` ]; then
   ~/.cargo/bin/rustup default nightly
 fi
 
+grep ".cargo/bin" ~/.bashrc > /dev/null || echo "PATH=~/.cargo/bin:\$PATH" >> ~/.bashrc
+PATH=~/.cargo/bin:$PATH
+
 #
 # install Pathogen for Vim
 #
 
 if [ ! -f ~/.vim/autoload/pathogen.vim ]; then
-	mkdir -p ~/.vim/autoload ~/.vim/bundle
-	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+  mkdir -p ~/.vim/autoload ~/.vim/bundle
+  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
   grep "syntax on"                 ~/.vimrc > /dev/null || echo "syntax on"                 >> ~/.vimrc
   grep "filetype plugin indent on" ~/.vimrc > /dev/null || echo "filetype plugin indent on" >> ~/.vimrc
@@ -40,7 +48,7 @@ fi
 #
 
 if [ ! -d ~/.vim/bundle/rust.vim ]; then
-	git clone --depth=1 https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
+  git clone --depth=1 https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
 fi
 
 #
