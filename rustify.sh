@@ -52,23 +52,6 @@ if [ ! -d ~/.vim/bundle/rust.vim ]; then
 fi
 
 #
-# install racer
-#
-
-if [ ! -f ~/.cargo/bin/racer ]; then
-  cargo install racer
-  rustup component add rust-src
-
-  grep "RUST_SRC_PATH" ~/.bashrc > /dev/null || echo 'export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"' >> ~/.bashrc
-
-  git clone --depth=1 https://github.com/racer-rust/vim-racer.git ~/.vim/bundle/vim-racer
-
-  grep "set hidden"         ~/.vimrc > /dev/null || echo "set hidden"                                            >> ~/.vimrc
-  grep "let g:racer_cmd"    ~/.vimrc > /dev/null || echo "let g:racer_cmd = \"$HOME/.cargo/bin/racer\""          >> ~/.vimrc
-  grep "rust-def-vertical)" ~/.vimrc > /dev/null || echo "au FileType rust nmap gd <Plug>(rust-def-vertical)"    >> ~/.vimrc
-fi
-
-#
 # install rustfmt
 #
 
