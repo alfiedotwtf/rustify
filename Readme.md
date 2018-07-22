@@ -1,17 +1,14 @@
 # NAME
 
-rustify - Convenience script to install Rust with all the trimmings inside Docker
+rustify - Convenience script to install Rust with all the trimmings
 
 # DESCRIPTION
 
-rustify is a convenience script to create a Rust development environment inside
-a Debian Docker container:
+`rustify` is a convenience script to install all the useful things needed for
+Rust development:
 
-    * Build Docker image
-    * Run Docker container
     * Install Rust
     * Setup Vim syntax highlighting
-    * Setup Racer with Vim integration for autocomplete
     * Setup rustfmt with Vim integration for autoformat
 
 If there's anything else you think would be useful, send a pull request and
@@ -19,31 +16,15 @@ i'll be happy to merge.
 
 # INSTALLATION
 
-The first thing to do is build the Docker image. This only has to be done once:
+Just run the installer:
 
-    $ make build-docker
-
-Once the Docker image has been built, run the Docker container and install the world:
-
-    $ make run-docker
-    # /srv/rustify/rustify.sh
-
-# USAGE
-
-Now that everything has been setup, it's ready to be used. Each time you want to do some Rust:
-
-    $ make run-docker
-    # <insert-rust-development>
+    install.sh
 
 # SUPPORT
 
 Please report any bugs or feature requests at:
 
-* [https://github.com/alfiedotwtf/rustify/issues](https://github.com/alfiedotwtf/rustify/issues)
-
-Watch the repository and keep up with the latest changes:
-
-* [https://github.com/alfiedotwtf/rustify/subscription](https://github.com/alfiedotwtf/rustify/subscription)
+* [https://gitlab.com/alfiedotwtf/rustify/issues](https://gitlab.com/alfiedotwtf/rustify/issues)
 
 Feel free to fork the repository and submit pull requests :)
 
