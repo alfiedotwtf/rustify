@@ -18,7 +18,7 @@ i'll be happy to merge.
 
 Just run the installer:
 
-    install.sh
+    ./install.sh
 
 # SUPPORT
 
