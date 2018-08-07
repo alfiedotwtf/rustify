@@ -56,7 +56,7 @@ fi
 #
 
 if [ ! -f ~/.cargo/bin/rustfmt ]; then
-  cargo install rustfmt-nightly
+  rustup component add rustfmt-preview
 
   grep "RustFmt" ~/.vimrc > /dev/null || echo "nmap <Leader>f :RustFmt<CR>" >> ~/.vimrc
 fi
