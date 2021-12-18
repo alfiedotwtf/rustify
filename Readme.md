@@ -24,7 +24,7 @@ Just run the installer:
 
 Please report any bugs or feature requests at:
 
-* [https://gitlab.com/alfiedotwtf/rustify/issues](https://gitlab.com/alfiedotwtf/rustify/issues)
+* [https://github.com/alfiedotwtf/rustify/issues](https://github.com/alfiedotwtf/rustify/issues)
 
 Feel free to fork the repository and submit pull requests :)
 
@@ -43,7 +43,7 @@ IT COMES WITHOUT WARRANTY OF ANY KIND.
 
 # COPYRIGHT AND LICENSE
 
-Perpetual Copyright (C) to Alfie John
+Copyright (C) 2021 to Alfie John
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
